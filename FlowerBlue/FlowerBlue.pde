@@ -1,21 +1,30 @@
-int r=60;
-float ballX;
-float ballY;
+int r=60; //radius of petals
+float ballX; //x-position of petal center
+float ballY; //y-position of petal center
 
 void setup() {
-  size(600,400);
+  size(1200,1000);
   background(#43AF76);
 }
 
 void draw(){
-
-  fill(#F7F8FA);
-  for (float i=0;i<PI*2;i+=2*PI/5) {
-  ballX=width/2 + r*cos(i);
-  ballY=height/2 + r*sin(i);
-  ellipse(ballX,ballY,r,r); 
+int petalColor=#3F8915;
+flower(r,5,width/2,height/2,petalColor);
+flower(r*2,5,1000,600,petalColor);
+flower(r*3,6,100,500,petalColor*2);
   }
-  fill(200,0,0);
-  ellipse(width/2,height/2,r*1.2,r*1.2);
-}  
- 
+
+  
+void flower(float r, int numPetals, float x, float y, int petalColor){  
+
+  fill(petalColor);
+  
+  for (float i=0;i<PI*2;i+=2*PI/numPetals) {
+  ballX=x + r*cos(i);
+  ballY=y + r*sin(i);
+  ellipse(ballX,ballY,r,r); 
+
+}
+ fill(200,0,0);
+  ellipse(x,y,r*1.2,r*1.2);
+}
